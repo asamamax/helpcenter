@@ -17,13 +17,24 @@ html {
 }
 
 body {
+  /* refresh 2.0 */
+  position: relative;
+  background-color: $color_2;
+  background-image: url(//p4.zdassets.com/hc/theme_assets/468339/200011725/bg_green.png);
+  background-repeat: no-repeat;
+  background-position-y: 160px;
+  background-position-x: right;
+  
+  /*
   color: $color_4;
+  */
   font-family: $font_1;
   font-size: 13px;
   font-weight: lighter;
   line-height: 1.5;
   margin: 0;
   padding-bottom: 50px;
+  
 }
 
 img {
@@ -523,8 +534,10 @@ main, .header-inner, .footer-inner {
 
 /* Header */
 .header {
-  background: $color_1;
+  background: $color_2;
+  /* refresh 2.0
   border-bottom: 1px solid #e6e6e6;
+   */
 }
 
 .header-inner {
