@@ -10,11 +10,19 @@
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
+  @font-face{
+      font-family:"LLAkkuratWeb-Light";src:url('//p4.zdassets.com/hc/theme_assets/468339/200011725/lineto-akkurat-light-s.eot');src:url('//p4.zdassets.com/hc/theme_assets/468339/200011725/lineto-akkurat-light-s.eot#iefix')
+      format("embedded-opentype"),url('//p4.zdassets.com/hc/theme_assets/468339/200011725/lineto-akkurat-light-s.eot')
+      format("woff"),url('//p4.zdassets.com/hc/theme_assets/468339/200011725/lineto-akkurat-light-s.woff')
+      format("truetype"),url('//p4.zdassets.com/hc/theme_assets/468339/200011725/lineto-akkurat-light-s.ttf')
+      format("svg"), url('//p4.zdassets.com/hc/theme_assets/468339/200011725/lineto-akkurat-light-s.svg#LLAkkuratWeb-Light');
+      font-weight:normal;
+      font-style:normal;
+  }
 }
 
 html {
   background-color: $color_2;
-  format("truetype"),url('//lineto-akkurat-light-s.svg#LLAkkuratWeb-Light');
 }
 
 body {
