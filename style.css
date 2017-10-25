@@ -14,6 +14,7 @@
 
 html {
   background-color: $color_2;
+  format("truetype"),url('//lineto-akkurat-light-s.svg#LLAkkuratWeb-Light');
 }
 
 body {
@@ -22,18 +23,21 @@ body {
   background-color: $color_2;
   background-image: url(//p4.zdassets.com/hc/theme_assets/468339/200011725/bg_green.png);
   background-repeat: no-repeat;
+  background-attachment: fixed;
   background-position-y: 160px;
   background-position-x: right;
+  font: 400 12px/1 "LLAkkuratWeb-Light", Helmut, Helvetica, Arial, sans-serif;
+  color: $color_4;
   
   /*
   color: $color_4;
-  */
   font-family: $font_1;
   font-size: 13px;
   font-weight: lighter;
   line-height: 1.5;
   margin: 0;
   padding-bottom: 50px;
+  */
   
 }
 
@@ -51,8 +55,11 @@ figure > img {
 }
 
 a {
-  color: $color_5;
-  font-family: $font_2;
+  /* refresh 2.0 */
+  color: $color_4;
+  font: 400 12px/1 "LLAkkuratWeb-Light", Helmut, Helvetica, Arial, sans-serif;
+  font-size: 100%;
+  /*font-family: $font_2;*/
   text-decoration: none;
 }
 a:hover {
@@ -90,7 +97,10 @@ td {
 }
 
 h1, h2, h3, h4, h5, h6 {
-  color: black;
+  /* refresh 2.0 */
+  color: $color_4;
+  font-weight: bold;
+  /*color: black;*/
 }
 
 input, label {
@@ -842,6 +852,7 @@ body.community-enabled .knowledge-base {
 .article-promoted span, .visibility-internal {
   cursor: default;
   position: relative;
+  color: $color_3;
 }
 .article-promoted span:before, .article-promoted span:after, .visibility-internal:before, .visibility-internal:after {
   display: none;
