@@ -64,7 +64,7 @@ figure > img {
 
 a {
   /* refresh 2.0 */
-  color: $color_4;
+  /*color: $color_4;*/
   font: 400 12px/1 "LLAkkuratWeb-Light", Helmut, Helvetica, Arial, sans-serif;
   font-size: 100%;
   /*font-family: $font_2;*/
@@ -72,7 +72,8 @@ a {
 }
 a:hover {
   text-decoration: underline;
-  font-size: 16px;
+  /* this breaks links that wordwrap */
+  /*font-size: 16px;*/
 }
 
 ul, ol {
@@ -365,6 +366,10 @@ button img, [role=button] img {
   content: ">";
 }
 
+.breadcrumbs a {
+  color: $color_4;
+}
+
 /* Labels */
 .label, .request-status {
   border-radius: 20px;
@@ -654,6 +659,15 @@ body.community-enabled .knowledge-base {
   margin-bottom: 10px;
 }
 
+.article-list a, .community a {
+    color: $color_4;
+}
+
+.article-list a:hover {
+  text-decoration: underline;
+  font-size: 16px;
+}
+
 .category h2 {
   border-bottom: 1px solid #e6e6e6;
   font-size: 15px;
@@ -662,8 +676,9 @@ body.community-enabled .knowledge-base {
   padding-bottom: 18px;
 }
 
-.category h2 a, .section h3 a {
-  color: inherit;
+.category h2 a, .section h3 a, .section a {
+  color: $color_4;
+  /*color: inherit;*/
 }
 
 .category-empty, .section {
@@ -741,6 +756,10 @@ body.community-enabled .knowledge-base {
   vertical-align: middle;
 }
 
+.article-info a {
+  color: $color_4;
+}
+
 .article-avatar {
   min-width: 55px;
 }
@@ -758,8 +777,16 @@ body.community-enabled .knowledge-base {
   line-height: 1.7;
 }
 
+.article-body a {
+    color: $color_3;
+}
+
 .article-sidebar {
   padding-top: 80px;
+}
+
+.article-sidebar a {
+  color: $color_4;
 }
 
 .article-more-questions {
@@ -1683,6 +1710,10 @@ body.community-enabled .search-results-column + .search-results-column {
 }
 .search-results-list > *:first-child {
   border-top: 1px solid #e6e6e6;
+}
+
+.search-results-list a {
+    color: $color_4;
 }
 
 .search-result-link {
