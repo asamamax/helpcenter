@@ -34,7 +34,7 @@ body {
   background-attachment: fixed;
   background-position-y: 160px;
   background-position-x: right;
-  font: 400 12px/1 "LLAkkuratWeb-Light", Helmut, Helvetica, Arial, sans-serif;
+  font: 400 14px/1 "LLAkkuratWeb-Light", Helmut, Helvetica, Arial, sans-serif;
   color: $color_4;
   
   /*
@@ -65,7 +65,7 @@ figure > img {
 a {
   /* refresh 2.0 */
   /*color: $color_4;*/
-  font: 400 12px/1 "LLAkkuratWeb-Light", Helmut, Helvetica, Arial, sans-serif;
+  font: 400 14px/1 "LLAkkuratWeb-Light", Helmut, Helvetica, Arial, sans-serif;
   font-size: 100%;
   /*font-family: $font_2;*/
   text-decoration: none;
@@ -665,7 +665,6 @@ body.community-enabled .knowledge-base {
 
 .article-list a:hover {
   text-decoration: underline;
-  font-size: 16px;
 }
 
 .category h2 {
