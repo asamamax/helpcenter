@@ -4,16 +4,153 @@
 </nav>
 
 <section class="main-column">
-  <h1>{{t 'submit_a_request'}}{{#if parent}}
-    <span class="follow-up-hint">
-      {{follow_up}}
-    </span>
-  {{/if}}</h1>
-  
-  <div class="form">
-    {{request_form}}
+  {{satisfaction}}
+  <strong class="request-id">{{t 'request' request_number=request.id}}</strong>
+  <h1>{{request.subject}}</h1>
+  <ul class="comment-list">
+    {{#each comments}}
+      <li id="{{anchor}}" class="comment">
+        <div class="comment-avatar {{#if author.agent}} comment-avatar-agent {{/if}}">
+          <img src="{{author.avatar_url}}" alt="Avatar"/>
+        </div>
+        <div class="comment-container">
+          <strong class="comment-author">{{author.name}}</strong>
+          <span class="comment-published">{{date created_at}}</span>
+          <div class="comment-body">{{body}}</div>
+          {{#if attachments}}
+            <ul class="attachment-list">
+              {{#each attachments}}
+                <li>
+                  <a href="{{url}}" target="_blank">{{name}}</a>
+                  <span>({{size}})</span>
+                </li>
+              {{/each}}
+            </ul>
+          {{/if}}
+        </div>
+      </li>
+    {{/each}}
+  </ul>
+
+  {{pagination}}
+  <div class="request-follow-up">
+    {{comment_callout}}
   </div>
-<!-- Solvvy Preloader Text 2.0 Now with Mobile -->
+
+  {{#form 'comment' class='comment-form'}}
+    <div class="comment-avatar">
+      {{user_avatar class='user-avatar'}}
+    </div>
+    <div class="comment-container">
+      {{textarea 'body' rows='4'}}
+      <div class="comment-attachments">
+        {{upload}}
+      </div>
+      <div class="comment-form-controls clearfix">
+        <div class="comment-mark-as-solved">
+          {{checkbox 'mark_as_solved'}}
+          {{label 'mark_as_solved'}}
+        </div>
+        {{input type='submit'}}
+      </div>
+    </div>
+  {{/form}}
+</section>
+
+<section class="side-column">
+  <dl class="request-details">
+    <dt>{{t 'submitted_by' requester_name=request.requester.name}}</dt>
+
+    {{#form 'organization' id='request-organization'}}
+      <br/>
+      <dt>{{t 'organization'}}</dt>
+      <dd>
+        {{select 'organization'}}
+        <script>
+        $(document).ready(function() {
+          // Submit organization form when the value in the select changes
+          $("#request-organization select").on("change", function() {
+            $("#request-organization").submit();
+          });
+        });
+        </script>
+      </dd>
+    {{/form}}
+
+    {{#if group}}
+      <dt>{{t 'group'}}</dt>
+      <dd>
+        <span>{{group.name}}</span>
+      </dd>
+    {{/if}}
+
+    <dt>{{t 'status'}}</dt>
+    <dd>
+      <span class="request-status request-{{request.status}}" title="{{request.status_description}}">
+        {{request.status_name}}
+      </span>
+    </dd>
+
+    {{#if request.type}}
+      <dt>{{t 'type'}}</dt>
+      <dd>
+        <span>
+          {{request.type_name}}
+          {{#is request.type 'task'}}{{t 'task_due_date' due_date=request.due_date}}{{/is}}
+        </span>
+      </dd>
+    {{/if}}
+
+    {{#if request.priority}}
+      <dt>{{t 'priority'}}</dt>
+      <dd>
+        <span>{{request.priority_name}}</span>
+      </dd>
+    {{/if}}
+
+    {{#if assignee}}
+      <dt>{{t 'assignee'}}</dt>
+      <dd>
+        <span>{{assignee.name}}</span>
+      </dd>
+    {{/if}}
+
+    {{#each custom_fields}}
+      <dt>{{title}}</dt>
+      <dd>
+        <span>{{value}}</span>
+      </dd>
+    {{/each}}
+
+    {{#if attachments}}
+      <dt>{{t 'attachments_heading'}}</dt>
+      <dd>
+        <ul class="attachment-list">
+          {{#each attachments}}
+            <li>
+              <a href="{{url}}" target="_blank">{{name}}</a>
+              <span>({{size}})</span>
+            </li>
+          {{/each}}
+        </ul>
+      </dd>
+    {{/if}}
+
+    {{#if collaborators}}
+      <dt>{{t 'ccs'}}</dt>
+      <dd>
+        <span>{{t 'ccs_description'}}</span>
+        <ul class="attachment-list">
+          {{#each collaborators}}
+            <li>{{name}}</li>
+          {{/each}}
+        </ul>
+      </dd>
+    {{/if}}
+  </dl>
+  {{link 'new_request' role='button'}}
+</section>
+<!-- Solvvy v2.0 -->
 <script>
 !function(t){function e(o){if(r[o])return r[o].exports;var n=r[o]={exports:{},id:o,loaded:!1};return t[o].call(n.exports,n,n.exports,e),n.loaded=!0,n.exports}var r={};return e.m=t,e.c=r,e.p="",e(0)}([function(t,e,r){
 "use strict";function o(t){return t&&t.__esModule?t:{default:t}}Object.defineProperty(e,"__esModule",{value:!0});var n="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(t){return typeof t;
@@ -46,7 +183,7 @@ var o=r(6),n=e.solvvyIsDisabled=function(){return Boolean((0,o.loadFromCookie)("
 var t={};try{document.cookie.split(";").map(function(t){return t.trim().split("=")}).forEach(function(e){var r=e[0],o=e[1];t[r]=o})}catch(t){}return t},o=e.loadFromCookie=function(t){return r()[t]};e.default=o;
 }]);
 </script>
-<!-- End of Solvvy Preloader Text -->
-</section>
+<!-- End of Solvvy 2.0 -->
 
-{{chat}}
+
+{{chat_about_my_ticket}}
