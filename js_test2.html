@@ -1,0 +1,19 @@
+<html>
+<head>
+<title>This is a Test</title>
+<script type="application/json" id="stuff">
+  {
+    "unicorns": "awesome",
+    "abc": [1,2,3]
+  }
+</script>
+</head>
+<body>
+<script>
+var someText=JSON.parse(document.getElementById('stuff').innerHTML);
+alert(someText.unicorns);
+</script>
+
+</body>
+
+</html>

@@ -27,7 +27,42 @@ $(document).ready(function() {
       $('a.submit-a-request').show();
     }
   }());
-
+                  
+  // Code to populate dynamic article content
+  (function() {
+     var siloArr=JSON.parse(document.getElementById('siloMapping').innerHTML);
+     console.log(siloArr);
+     var siloName="silo2";
+     var siloIndex=-1;
+     console.log(Object.keys(siloArr.silos).length);
+     for (var i=0; i<Object.keys(siloArr.silos).length; i++) {
+     console.log(siloArr.silos[i].name);
+     if ( siloName == siloArr.silos[i].name ) { siloIndex=i; }
+     }
+     //var custSilo = document.getElementById('custSilo').innerHTML = "silo" + (siloIndex+1);
+   
+     //maildrop dynamic address content
+     var mailDropRefs = document.getElementsByName("mailDropAddress");
+     for (var i=0; i<mailDropRefs.length; i++) {
+     if (siloIndex != -1) { mailDropRefs[i].innerHTML = siloArr.silos[siloIndex].mailDropAddr; }
+     else { mailDropRefs[i].innerHTML = "unknown address"; }
+     }
+   
+     //flyonthewall dynamic address content
+     var flyOnTheWallRefs = document.getElementsByName("flyOnTheWallAddress");
+     for (var i=0; i<flyOnTheWallRefs.length; i++) {
+     if (siloIndex != -1) { flyOnTheWallRefs[i].innerHTML = siloArr.silos[siloIndex].flyOnTheWallAddr; }
+     else { flyOnTheWallRefs[i].innerHTML = "unknown address"; }
+     }
+   
+     //schedule dynamic address content
+     var schedulingRefs = document.getElementsByName("schedulingAddress");
+     for (var i=0; i<schedulingRefs.length; i++) {
+     if (siloIndex != -1) { schedulingRefs[i].innerHTML = siloArr.silos[siloIndex].schedulingAddr; }
+     else { schedulingRefs[i].innerHTML = "unknown address"; }
+     }
+   }());
+                  
   // social share popups
   $(".share a").click(function(e) {
     e.preventDefault();
