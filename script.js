@@ -32,7 +32,15 @@ $(document).ready(function() {
   (function() {
      var siloArr=JSON.parse(document.getElementById('siloMapping').innerHTML);
      console.log(siloArr);
-     var siloName="silo2";
+     var siloName="silo1";
+     function findSilo(element, index, array) {
+       return ((element == 'silo1') || (element == 'silo1')); 
+     }
+     HelpCenter.user.organization.forEach(function(x) {
+       siloName=x.tags.some(findSilo);
+       console.log(x);
+     return(siloName);
+     });  
      var siloIndex=-1;
      console.log(Object.keys(siloArr.silos).length);
      for (var i=0; i<Object.keys(siloArr.silos).length; i++) {
