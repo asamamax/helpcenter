@@ -28,26 +28,35 @@ $(document).ready(function() {
     }
   }());
                   
-  // Code to populate dynamic article content
+   // Code to populate dynamic article content
   (function() {
      var siloArr=JSON.parse(document.getElementById('siloMapping').innerHTML);
      console.log(siloArr);
-     var siloName="silo1";
-     function findSilo(element, index, array) {
-       return ((element == 'silo1') || (element == 'silo1')); 
+     var siloName="nosilo";
+     var isSilo2,isSilo1="false"
+     function checkSilo2(element, index, array) {
+       //console.log("DEBUG: Looking at element " + element + " from checkSilo2");
+       return (element == 'silo2');
      }
-     HelpCenter.user.organization.forEach(function(x) {
-       siloName=x.tags.some(findSilo);
-       console.log(x);
+     function checkSilo1(element, index, array) {
+       //console.log("DEBUG: Looking at element " + element + " from checkSilo1");
+       return (element == 'silo1');
+     }
+     HelpCenter.user.organizations.forEach(function(x) {
+       //console.log("DEBUG: " + x.name + " tags are: " + x.tags);
+       isSilo2=x.tags.some(checkSilo2);
+       isSilo1=x.tags.some(checkSilo1);
+       if (isSilo2) { siloName="silo2"; }
+       if (isSilo1) { siloName="silo1"; } 
      return(siloName);
-     });  
+     });
      var siloIndex=-1;
-     console.log(Object.keys(siloArr.silos).length);
+     //console.log("DEBUG: siloMapping Arr Length: " + Object.keys(siloArr.silos).length);
      for (var i=0; i<Object.keys(siloArr.silos).length; i++) {
-     console.log(siloArr.silos[i].name);
-     if ( siloName == siloArr.silos[i].name ) { siloIndex=i; }
+       if ( siloName == siloArr.silos[i].name ) { siloIndex=i; }
      }
-     //var custSilo = document.getElementById('custSilo').innerHTML = "silo" + (siloIndex+1);
+    //document.getElementById('custSilo').innerHTML = "silo" + (siloIndex+1);
+    console.log("Organization Silo is: " + siloName);
    
      //maildrop dynamic address content
      var mailDropRefs = document.getElementsByName("mailDropAddress");
