@@ -1,0 +1,33 @@
+<nav class="sub-nav">
+  {{breadcrumbs}}
+  {{search}}
+</nav>
+
+<header class="knowledge-base-header">
+  <h1>{{#if section.internal}}
+    <span class="visibility-internal" data-title="{{t 'internal'}}">
+      <span class="visibility-internal-icon"></span>
+    </span>
+  {{/if}} {{section.name}}</h1>
+  <span>{{subscribe}}</span>
+  <p>{{section.description}}</p>
+</header>
+
+{{#if section.articles}}
+  <ul class="article-list">
+    {{#each section.articles}}
+      <li {{#if promoted}} class="article-promoted" {{/if}}>
+        {{#if promoted}}
+          <span data-title="{{t 'promoted'}}">★</span>
+        {{/if}}
+        <a href="{{url}}">{{title}}</a>
+      </li>
+    {{/each}}
+  </ul>
+{{else}}
+  <i class="section-empty">
+    <a href="{{section.url}}">{{t 'empty'}}</a>
+  </i>
+{{/if}}
+
+{{pagination}}
