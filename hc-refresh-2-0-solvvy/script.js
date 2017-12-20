@@ -30,6 +30,12 @@ $(document).ready(function() {
   
     // Code to populate dynamic article content
   (function() {
+     var OrganizationTags = HelpCenter.user.organizations[0].tags;
+     if (OrganizationTags.includes('silo2')){
+      $("a:contains('maildrop@greenhouse.io')").html('<a href="mailto:maildrop@ivy.greenhouse.io">maildrop@ivy.greenhouse.io</a>');
+      $("a:contains('flyonthewall@greenhouse.io')").html('<a href="mailto:flyonthewall@ivy.greenhouse.io">flyonthewall@ivy.greenhouse.io</a>');
+      $("a:contains('schedule@ghcalendar.io')").html('<a href="mailto:schedule@ivy.ghcalendar.io">schedule@ivy.ghcalendar.io</a>');
+     }  
      var siloArr=JSON.parse(document.getElementById('siloMapping').innerHTML);
      console.log(siloArr);
      var siloName="nosilo";
