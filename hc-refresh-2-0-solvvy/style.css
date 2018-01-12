@@ -1,9 +1,13 @@
 /* ====================================================
    things to hide at start up
    ==================================================== */  
-   a[href$='requests/new'], a.submit-a-request, .my-activities, #user-menu .my-activities {
-     display: none;
+   a[href$='requests/new'], a.submit-a-request, .my-activities, #user-menu, .my-activities, .community  {
+     display: none !important;
    }
+
+.search-results section:nth-of-type(2) {
+  display: none !important;
+}
 
 /* Base styles */
 *, input[type=search] {
@@ -607,7 +611,8 @@ body.community-enabled .knowledge-base, body.community-enabled .community {
   vertical-align: top;
 }
 body.community-enabled .knowledge-base {
-  width: 620px;
+  //This hides the community from the right hand view of the Help Center (since there is nothing public facing yet)
+  //width: 620px;
 }
 
 .knowledge-base, .community {
@@ -839,7 +844,7 @@ body.community-enabled .knowledge-base {
   opacity: 1;
 }
 
-.article-vote-up.article-voted {
+.article-vote-up .article-voted {
   color: #6B9100;
 }
 /*Bulleted List Fix*/
@@ -1552,11 +1557,13 @@ body.community-enabled .knowledge-base {
 }
 
 .vote-up:before {
-  content: "\E763";
+  //content: "\E763";
+  content: "\1f44d";
 }
 
 .vote-down:before {
-  content: "\E760";
+  //content: "\E760";
+  content: "\1f44e";
 }
 
 .vote-controls:hover {
@@ -1681,7 +1688,8 @@ body.community-enabled .knowledge-base {
 body.community-enabled .search-results-column {
   display: inline-block;
   vertical-align: top;
-  width: 450px;
+  //Hide search results for Community from Customers
+  //width: 450px;
 }
 body.community-enabled .search-results-column + .search-results-column {
   margin-left: 35px;
@@ -1818,3 +1826,5 @@ body.community-enabled .search-results-column + .search-results-column {
   display: block;
   margin-top: 25px;
 }
+
+
